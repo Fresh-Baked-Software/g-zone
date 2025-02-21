@@ -9,7 +9,6 @@ Local Dev Steps:
 
 Coming Soon:
 
-1. Convert to Styled Components 💅🏻
 2. More robust color palette
 3. Design overhaul
 4. More image optimizations
