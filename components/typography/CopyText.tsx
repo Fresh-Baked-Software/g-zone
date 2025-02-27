@@ -1,32 +1,27 @@
-// "use client";
+"use client";
 
-// import { ReactNode } from "react";
-// import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-// import { Document } from "@contentful/rich-text-types";
+import styled from "styled-components";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Document } from "@contentful/rich-text-types";
 
-// interface CopyProps {
-//     content: {
-//       json: Document;
-//     };
-// }
+interface CopyProps {
+    content: {
+      json: Document;
+    };
+}
 
-//   const options = {
-//     renderNode: {
-//       [BLOCKS.PARAGRAPH]: (_: Node, children: ReactNode) => <p>{children}</p>,
-//       [INLINES.HYPERLINK]: (node: Node, children: ReactNode) => (
-//         <a href={node.data.uri} target="_blank" rel="noopener noreferrer">
-//           {children}
-//         </a>
-//       ),
-//     },
-//   };
+const StyledParagraph = styled.p`
+  font-size: 1rem;
+  margin-bottom: var(--space-4);
+  padding-inline: var(--space-12);
+  text-align: justify;
+`;
 
 
-// export default function CopyText({ content }: CopyProps) {
-//   return (
-//     <div className="text-md mb-12 text-justify pe-16">
-//       {content && documentToReactComponents(content.json, options)}
-//     </div>
-//   );
-// }
+export default function CopyText({ content }: CopyProps) {
+  return (
+    <StyledParagraph>
+      {content && documentToReactComponents(content.json)}
+    </StyledParagraph>
+  );
+}
