@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { Open_Sans} from "next/font/google";
+import styled from "styled-components";
 
 import "../styles/globals.css";
 import Header from "../components/layout/Header";
@@ -18,6 +19,11 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
 });
+
+const Main = styled.main`
+  height: calc(100vh - 200px);
+  margin-bottom: 30rem;
+`;
 
 export default function App({ Component, pageProps }: AppProps) {
   const [header, setHeader] = useState<NavigationItem>();
@@ -52,11 +58,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div
-        className={`${openSans.variable}`}
-      >
+      <div className={`${openSans.variable}`}>
         {header && <Header header={header} />}
-        <Component {...pageProps} />
+        <Main>
+          <Component {...pageProps} />
+        </Main>
         {footer && <Footer footer={footer} />}
       </div>
     </ThemeProvider>

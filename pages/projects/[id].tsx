@@ -3,7 +3,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-import { EmblaCarousel } from "../../components/images/Carousel";
+import EmblaCarousel from "../../components/images/Carousel";
 import { getProjectIds, getProject } from "../../contentful/queries/project";
 import { ProjectItem } from "../../types/contentful";
 
