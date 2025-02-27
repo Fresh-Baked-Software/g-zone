@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import Image from 'next/image';
 import Cookies from "js-cookie";
 import styled from "styled-components";
+
+import Sun from '../../public/icons/sun-sharp-light.svg'
+import Moon from '../../public/icons/moon-sharp-light.svg'
 
 const StyledButton = styled.button<{ theme: string | undefined }>`
   position: relative;
@@ -22,7 +26,7 @@ const StyledButton = styled.button<{ theme: string | undefined }>`
   }
 `
 
-const ToggleKnob = styled.div<{ isDark: boolean }>`
+const ToggleKnob = styled.div<{ $isDark: boolean }>`
   position: absolute;
   z-index: 2;
   width: 1.75rem;
@@ -30,7 +34,7 @@ const ToggleKnob = styled.div<{ isDark: boolean }>`
   border-radius: 50%;
   background-color: white;
   transition: transform 300ms ease-in-out;
-  transform: translateX(${(props) => (props.isDark ? "1.75rem" : "-.25rem")});
+  transform: translateX(${(props) => (props.$isDark ? "1.75rem" : "-.25rem")});
 `
 
 const IconSpan = styled.span`
@@ -63,9 +67,9 @@ export function ThemeToggle() {
 
   return (
     <StyledButton onClick={toggleTheme} theme={theme}>
-      <IconSpan>🌚</IconSpan>
-      <ToggleKnob isDark={theme === "dark"} />
-      <IconSpan>🌞</IconSpan>
+      <IconSpan><Image src={Moon} alt="a moon" width={20} height={20}/></IconSpan>
+      <ToggleKnob $isDark={theme === "dark"} />
+      <IconSpan><Image src={Sun} alt="a sun" width={20} height={20}/></IconSpan>
     </StyledButton>
   )
 }
