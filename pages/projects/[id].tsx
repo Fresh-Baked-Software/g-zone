@@ -6,6 +6,8 @@ import styled from "styled-components";
 import EmblaCarousel from "../../components/images/Carousel";
 import { getProjectIds, getProject } from "../../contentful/queries/project";
 import { ProjectItem } from "../../types/contentful";
+import GridLayout from "../../components/layout/GridLayout";
+import CopyText from "../../components/typography/CopyText";
 
 export async function getStaticPaths() {
   const data = await getProjectIds();
@@ -53,12 +55,16 @@ const Title = styled.h1`
 
 const Section = styled.section`
   margin-bottom: var(--space-12);
+  &:last-of-type {
+    margin-bottom: var(--space-20);
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
   margin-bottom: var(--space-4);
+  padding-inline-start: var(--space-12);
 `;
 
 export default function Project({ project }: { project: ProjectItem }) {
@@ -77,15 +83,22 @@ export default function Project({ project }: { project: ProjectItem }) {
       <Header>
         <Title>{name}</Title>
       </Header>
-
-      <div className="mt-8 mb-12">{/* <PortableText value={content} /> */}</div>
       {projectSections &&
-        projectSections.map((section) => (
-          <Section key={section.sys.id}>
-            <SectionTitle>{section.title}</SectionTitle>
-            <EmblaCarousel images={section.imagesCollection.items} />
-          </Section>
-        ))}
+        projectSections.map((section) =>
+          section.useGrid ? (
+            <Section key={section.sys.id}>
+              <SectionTitle>{section.title}</SectionTitle>
+              <CopyText content={section.content} />
+              <GridLayout images={section.imagesCollection.items} />
+            </Section>
+          ) : (
+            <Section key={section.sys.id}>
+              <SectionTitle>{section.title}</SectionTitle>
+              <CopyText content={section.content} />
+              <EmblaCarousel images={section.imagesCollection.items} />
+            </Section>
+          )
+        )}
     </Container>
   );
 }

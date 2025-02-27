@@ -21,7 +21,7 @@ interface ImageProps {
   }[];
 }
 
-const Embla = styled.section`
+const Embla = styled.div`
   max-width: 80rem;
   margin: auto;
   --slide-height: 50rem;

@@ -36,6 +36,7 @@ type ProjectItem = {
       content: {
         json: Document;
       };
+      useGrid: boolean;
       imagesCollection: {
         items: {
           sys: {

@@ -117,6 +117,7 @@ const getProject = async (id?: string): Promise<ProjectItem> => {
             content {
               json
             }
+            useGrid
             imagesCollection(limit: 10) {
               items {
                 sys {
