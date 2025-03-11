@@ -12,6 +12,7 @@ import { getProjects } from "../contentful/queries/project";
 const Container = styled.div`
   max-width: 1400px;
   margin: var(--space-8) auto;
+  padding-inline: var(--space-4);
   height: 100%;
 `;
 

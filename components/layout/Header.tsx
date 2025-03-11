@@ -3,9 +3,10 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-import mq from "../../styles/theme/mq";
 import { ThemeToggle } from "../theme/ThemeToggle";
 import { NavigationItem } from "../../types/contentful";
+import InstagramIcon from "../../public/icons/instagram-brands.svg";
+import Image from "next/image";
 
 const HeaderContainer = styled.header`
   box-shadow: 0 4px 6px hsl(var(--box-shadow-color));
@@ -13,20 +14,16 @@ const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   z-index: 50;
+  padding: var(--space-4) var(--space-8);
 `;
 
 const HeaderContent = styled.div`
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: var(--space-4) var(--space-2);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  @media (${mq.mobile}) {
-    flex-direction: column;
-  }
 `;
 
 const LogoContainer = styled.div`
@@ -54,11 +51,6 @@ const LogoImg = styled.img`
   object-fit: cover;
   `;
 
-const IconImg = styled.img`
-  width: 20px;
-  height: 20px;
-`
-
 export default function Header({ header }: { header: NavigationItem }) {
   if (!header) return null;
 
@@ -85,7 +77,7 @@ export default function Header({ header }: { header: NavigationItem }) {
                 <li key={l.slug ?? l.socialUrl ?? `link-${idx}`}>
                   <Link href={l.socialUrl ?? (l.slug ? `/${l.slug}` : "#")} passHref>
                     {l.icon ? (
-                      <IconImg src={l.icon.url} alt={l.name}/>
+                      <Image src={InstagramIcon} alt={l.name || 'instagram icon'} width={20}/>
                     ) : (
                       l.displayText
                     )}

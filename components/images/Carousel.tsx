@@ -6,6 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import styled from "styled-components";
 
 import { PrevButton, NextButton, usePrevNextButtons } from "./CarouselButtons";
+import mq from "../../styles/theme/mq";
 
 interface ImageProps {
   images: {
@@ -27,6 +28,9 @@ const Embla = styled.div`
   --slide-height: 50rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
+  // @media ${mq.mobile} {
+  //   max-width: 90vw;
+  // }
 `;
 
 const EmblaViewport = styled.div`

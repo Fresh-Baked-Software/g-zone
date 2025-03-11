@@ -8,6 +8,7 @@ import { getProjectIds, getProject } from "../../contentful/queries/project";
 import { ProjectItem } from "../../types/contentful";
 import GridLayout from "../../components/layout/GridLayout";
 import CopyText from "../../components/typography/CopyText";
+import mq from "../../styles/theme/mq";
 
 export async function getStaticPaths() {
   const data = await getProjectIds();
@@ -35,6 +36,9 @@ const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--space-8) var(--space-4);
+  @media ${mq.mobile} {
+    padding-inline: var(--space-2);
+  }
 `;
 
 const Header = styled.header`
@@ -65,6 +69,9 @@ const SectionTitle = styled.h2`
   font-weight: var(--font-bold);
   margin-bottom: var(--space-4);
   padding-inline-start: var(--space-12);
+  @media ${mq.mobile} {
+    padding-inline: var(--space-2);
+  }
 `;
 
 export default function Project({ project }: { project: ProjectItem }) {

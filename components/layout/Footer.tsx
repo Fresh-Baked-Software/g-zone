@@ -10,7 +10,7 @@ import { NavigationItem } from '../../types/contentful';
 const FooterContainer = styled.footer`
   box-shadow: 0 -4px 6px hsl(var(--box-shadow-color));
   background-color: hsl(var(--color-bg));
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
 `;
