@@ -21,8 +21,7 @@ const openSans = Open_Sans({
 });
 
 const Main = styled.main`
-  height: calc(100vh - 200px);
-  margin-bottom: 30rem;
+  position: relative;
 `;
 
 export default function App({ Component, pageProps }: AppProps) {
