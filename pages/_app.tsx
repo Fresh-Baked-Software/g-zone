@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Open_Sans} from "next/font/google";
 import styled from "styled-components";
 
@@ -14,6 +14,7 @@ import {
   getNavigationIds,
 } from "../contentful/queries/navigation";
 import { NavigationItem } from "../types/contentful";
+import Head from "next/head";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -56,6 +57,20 @@ export default function App({ Component, pageProps }: AppProps) {
   if (error) return <Error />;
 
   return (
+    <React.Fragment>
+    <Head>
+        <title>My Portfolio</title>
+        <meta property="og:title" content="My portfolio" />
+        <meta property="og:description" content="My portfolio" />
+        <meta property="og:image" content="https://images.ctfassets.net/31t07jhehg9u/2TYjX4wJiaeyj61oShxtnH/2512c4fe3dead31f660b80f7af12486b/g-03_edited.png" />
+        <meta property="og:url" content="https://giannavella.com/" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="My Portfolio" />
+        <meta name="twitter:description" content="My portfolio!" />
+        <meta name="twitter:image" content="https://images.ctfassets.net/31t07jhehg9u/2TYjX4wJiaeyj61oShxtnH/2512c4fe3dead31f660b80f7af12486b/g-03_edited.png" />
+    </Head>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className={`${openSans.variable}`}>
         {header && <Header header={header} />}
@@ -65,5 +80,6 @@ export default function App({ Component, pageProps }: AppProps) {
         {footer && <Footer footer={footer} />}
       </div>
     </ThemeProvider>
+    </React.Fragment>
   );
 }

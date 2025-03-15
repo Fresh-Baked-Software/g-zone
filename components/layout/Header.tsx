@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-import { ThemeToggle } from "../theme/ThemeToggle";
+// import { ThemeToggle } from "../theme/ThemeToggle";
 import { NavigationItem } from "../../types/contentful";
 import InstagramIcon from "../../public/icons/instagram-brands.svg";
 import Image from "next/image";
@@ -15,6 +15,9 @@ const HeaderContainer = styled.header`
   top: 0;
   z-index: 50;
   padding: var(--space-4) var(--space-8);
+  @media (color-scheme: dark) {
+    background-color: hsl(var(--color-bg-dark));
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -70,7 +73,7 @@ export default function Header({ header }: { header: NavigationItem }) {
           </Link>
         </LogoContainer>
         <FlexContainer>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <nav>
             <NavList>
               {linksCollection?.items?.map((l, idx) => (
